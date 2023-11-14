@@ -30,22 +30,12 @@ public class 스위치_켜고_끄기_1244_실버4 {
             {
                 if(num == N) // 받은 수가 스위치 개수와 같으면 배수가 자기자신뿐이므로 토글 후 넘어가기
                 {
-                    switches[N+1] = toggleSwitch(switches[N+1]);
+                    switches[N] = toggleSwitch(switches[N]);
                     continue;
                 }
-                int limit = (int)(N/num)*num; // 배수가 Index를 넘어가지 않도록 limit 설정
-                limit = limit > N+1 ? N+1 : limit;
-                for(int n = 1; n < N; n++)
+                for(int n = 1; n*num < N; n++)
                 {
-                    // System.out.println("n : " + n + ", num : "+ num + ", limit : " + limit);
-                    if(n*num <= limit)
-                    {
-                        switches[n*num] = toggleSwitch(switches[n*num]); // 각 배수 토글
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    switches[n*num] = toggleSwitch(switches[n*num]); // 각 배수 토글
                 }
             }
             else // 여학생
