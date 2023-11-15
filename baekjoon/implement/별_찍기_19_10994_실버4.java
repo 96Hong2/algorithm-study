@@ -19,7 +19,7 @@ public class 별_찍기_19_10994_실버4 {
             String rowStr = "";
             if(i % 2 == 0) // i가 짝수이면
             {
-                rowStr += "* ".repeat((int)(i / 2));
+                rowStr += "* ".repeat((int)(i / 2)); // String 클래스의 repeat은 Java11버전부터 사용 가능
                 rowStr += "*".repeat(size - (i * 2));
                 rowStr += " *".repeat((int)(i / 2));
             }
