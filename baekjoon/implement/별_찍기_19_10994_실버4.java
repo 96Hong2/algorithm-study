@@ -2,6 +2,7 @@ package baekjoon.implement;
 import java.util.Scanner;
 import java.util.HashMap;
 
+// TODO : 재귀로 구현해보기
 public class 별_찍기_19_10994_실버4 {
     public static void main(String[] args)
     {
