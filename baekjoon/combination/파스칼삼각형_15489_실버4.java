@@ -1,6 +1,11 @@
 package baekjoon.combination;
+import java.util.Scanner;
 
 public class 파스칼삼각형_15489_실버4 {
+    static int r;
+    static int c;
+    static int w;
+    static int result = 0;
 
     // TODO : factorial 을 구하는 재귀함수를 이용하여 조합함수 만들기
     // 조합 nCr을 구하는 함수, head는 분자, tail은 분모
@@ -24,16 +29,40 @@ public class 파스칼삼각형_15489_실버4 {
         return combination(n, r-1, head, tail);
     }
 
-    public static void main(String[] args)
+    // 구하려는 삼각형의 값을 한 줄씩 구한다.
+    public static void getSum(int p, int q)
     {
-        System.out.println(combination(7, 4, 1, 1));
-        System.out.println(combination(7, 2, 1, 1));
-        System.out.println(combination(1, 0, 1, 1));
-        System.out.println(combination(7, 7, 1, 1));
-        System.out.println(combination(7, 6, 1, 1));
-        System.out.println(combination(7, 5, 1, 1));
-        System.out.println(combination(7, 3, 1, 1));
-        System.out.println(combination(7, 1, 1, 1));
+        // p는 구하려는 삼각형의 몇 번째 줄인지, q는 해당 줄이 전체삼각형의 몇번째 줄인지(해당 줄 조합의 앞의 수)
+        if(p > w) return; // p가 범위를 넘어가면 종료
+
+        for(int i = 0; i < p; i++) // 구하려는 삼각형의 해당 줄의 총합을 구한다.
+        {
+            // System.out.println("n : " + (q-1) + ", r : " + (c-1+i));
+            result += combination(q-1, c-1+i, 1, 1);
+        }
+        getSum(p+1, q+1);
     }
 
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        String[] info = scanner.nextLine().split(" ");
+        r = Integer.parseInt(info[0]);
+        c = Integer.parseInt(info[1]);
+        w = Integer.parseInt(info[2]);
+
+        if(r == 1)
+        {
+            for(int i = 0; i < w; i++)
+            {
+                result += (int) Math.pow(2, i);
+            }
+        }
+        else
+        {
+            getSum(1, r); // 구하려는 삼각형의 맨 위 꼭짓점 수부터 시작
+        }
+
+        System.out.println(result);
+    }
 }
