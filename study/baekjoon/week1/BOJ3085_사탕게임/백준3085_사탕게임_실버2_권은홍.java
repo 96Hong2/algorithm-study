@@ -1,4 +1,4 @@
-package study.baekjoon.week1;
+package study.baekjoon.week1.BOJ3085_사탕게임;
 import java.util.Scanner;
 
 public class 백준3085_사탕게임_실버2_권은홍 {

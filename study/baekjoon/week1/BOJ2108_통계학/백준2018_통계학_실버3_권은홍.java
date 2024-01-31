@@ -1,4 +1,4 @@
-package study.baekjoon.week1;
+package study.baekjoon.week1.BOJ2108_통계학;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
