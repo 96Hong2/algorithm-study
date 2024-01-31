@@ -46,4 +46,4 @@ result = sorted(list(a & b))
 print(len(result))
 
 for i in result:
-    print(i)
+    print(i) # print(변수, seq='\n') => for문 안돌리고 출력 가능
