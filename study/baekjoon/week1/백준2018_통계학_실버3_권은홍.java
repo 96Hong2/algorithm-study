@@ -1,4 +1,4 @@
-package study.beakjoon.week1;
+package study.baekjoon.week1;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
