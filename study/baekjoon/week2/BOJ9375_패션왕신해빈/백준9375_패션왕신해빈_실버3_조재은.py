@@ -1,27 +1,21 @@
-import sys
-
-T = int(sys.stdin.readline().strip())
+from collections import Counter
+t = int(input())
 
 # 테스트케이스 개수만큼 반복
-for _ in range(T):
-    wears = {}
-    n = int(sys.stdin.readline().strip())
+for i in range(t):
+    n = int(input())
+    wear = []
     # 의상 개수만큼 반복
-    for _ in range(n):
-        name, type = sys.stdin.readline().strip().split()
-        if type in wears:
-            # 종류가 이미 있으면 해당 종류에 의상 이름만 추가
-            wears[type].append(name)
-        else:
-            # 종류가 사전형에 없으면 추가
-            wears[type] = [name]
+    for j in range(n):
+        a, b = input().split()
+        wear.append(b)
 
-    cnt = 1
+    wear_Counter = Counter(wear)
+    cnt = 1 # 각 종류마다 항목의 개수
 
-    # 조합식을 세워 계산
-    # +1하는 이유는 알몸도 옷이라고 생각해 추가
-    for x in wears:
-        cnt *= (len(wears[x]) + 1)
-
+    for key in wear_Counter:
+        # +1하는 이유는 알몸도 옷이라고 생각해 추가
+        cnt *= wear_Counter[key] + 1
+        
     # -1하는 이유 모든 종류의 옷을 착용하지 않았을 경우를 제외
-    print(cnt - 1)
+    print("result", cnt-1)
