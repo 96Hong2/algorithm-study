@@ -1,9 +1,7 @@
 import heapq
-from heapq import nlargest
 
 n = int(input())
 arr = [list(map(int, input().split())) for _ in range(n)]
-arr = list(map(list, zip(*arr)))
 
 if n == 1:
     print(arr[0][0])
