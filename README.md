@@ -6,12 +6,15 @@
 
 </aside>
 
+## Directory
+**algorithm-study/study/baekjoon/week1/BOJ1234_문제명
+
 ## Branch / Commit Message
 
 - 브랜치명 : 
-**백준1234_이름**
+**BOJ1234_이름**
 - 파일명, 커밋 메시지 (동일하게) : 
-**백준1234_문제명_난이도_이름**
+**BOJ1234_문제명_난이도_이름**
 
 ## Pull Request (PR)
 
