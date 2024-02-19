@@ -1,22 +1,15 @@
 n, q = map(int, input().split())
-quality_sum_list = [1 for _ in range(n)]
+cow_quality_lst = list(map(int, input().split()))
+joke_lst = list(map(int, input().split()))
 
-qualities = map(int, input().split())
-i = 0
-for quality in qualities:
-    quality_sum_list[i % n] *= quality
-    quality_sum_list[(i - 1) % n] *= quality
-    quality_sum_list[(i - 2) % n] *= quality
-    quality_sum_list[(i - 3) % n] *= quality
-    i += 1
+cow_quality_sum_lst = []
+for idx, _ in enumerate(cow_quality_lst):
+    cow_quality_sum_lst.append(cow_quality_lst[idx % n] * cow_quality_lst[(idx + 1) % n] * cow_quality_lst[(idx + 2) % n] * cow_quality_lst[(idx + 3) % n])
 
-quality_sum = sum(quality_sum_list)
-
-jokes = map(int, input().split())
-for joke in jokes:
-    quality_sum_list[(joke - 1) % n] = -quality_sum_list[(joke - 1) % n]
-    quality_sum_list[(joke - 2) % n] = -quality_sum_list[(joke - 2) % n]
-    quality_sum_list[(joke - 3) % n] = -quality_sum_list[(joke - 3) % n]
-    quality_sum_list[(joke - 4) % n] = -quality_sum_list[(joke - 4) % n]
-    quality_sum += 2*(quality_sum_list[(joke - 1) % n] + quality_sum_list[(joke - 2) % n] + quality_sum_list[(joke - 3) % n] + quality_sum_list[(joke - 4) % n])
-    print(quality_sum)
+print(cow_quality_sum_lst)
+for cow_num in joke_lst:
+    cow_quality_sum_lst[(cow_num-1) % n] = -cow_quality_sum_lst[(cow_num-1) & n]
+    cow_quality_sum_lst[(cow_num-2) % n] = -cow_quality_sum_lst[(cow_num-2) % n]
+    cow_quality_sum_lst[(cow_num-3) % n] = -cow_quality_sum_lst[(cow_num-3) % n]
+    cow_quality_sum_lst[(cow_num-4) % n] = -cow_quality_sum_lst[(cow_num-4) % n]
+    print(cow_quality_sum_lst, sum(cow_quality_sum_lst))
