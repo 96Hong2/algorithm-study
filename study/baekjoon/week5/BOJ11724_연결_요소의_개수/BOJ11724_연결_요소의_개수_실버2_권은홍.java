@@ -1,8 +1,5 @@
 package study.baekjoon.week5.BOJ11724_연결_요소의_개수;
-import java.util.Scanner;
-import java.util.Queue;
-import java.util.LinkedList;
-import java.util.HashMap;
+import java.util.*;
 
 public class BOJ11724_연결_요소의_개수_실버2_권은홍 {
     public static class Graph
@@ -10,17 +7,18 @@ public class BOJ11724_연결_요소의_개수_실버2_권은홍 {
         static int V;
         static HashMap<Integer, LinkedList<Integer>> adjMap = new HashMap<>();
         static boolean[] visited;
-        static int notVisitCnt;
+        static HashSet<Integer> notVisitSet;
 
         public static void initGraph(int v)
         {
             V = v;
             visited = new boolean[V+1];
+            notVisitSet = new HashSet<>();
             for(int i = 1; i < V+1; i++)
             {
                 adjMap.put(i, new LinkedList<>());
+                notVisitSet.add(i);
             }
-            notVisitCnt = V;
         }
 
         public static void addEdge(int v1, int v2)
@@ -29,13 +27,15 @@ public class BOJ11724_연결_요소의_개수_실버2_권은홍 {
             adjMap.get(v2).add(v1);
         }
 
-        public static int getConnectedComponent(int start)
+        public static int getConnectedComponent()
         {
             int result = 0;
-            while(notVisitCnt > 0)
+            Iterator<Integer> iterator = notVisitSet.iterator();
+            while(iterator.hasNext())
             {
-                bfs(start);
+                bfs(iterator.next());
                 result++;
+                iterator = notVisitSet.iterator();
             }
             return result;
         }
@@ -45,16 +45,16 @@ public class BOJ11724_연결_요소의_개수_실버2_권은홍 {
             Queue<Integer> que = new LinkedList<>();
             que.add(start);
             visited[start] = true;
-            notVisitCnt--;
+            notVisitSet.remove(start);
             while(!que.isEmpty())
             {
                 int curr = que.poll();
-                notVisitCnt--;
                 LinkedList<Integer> adjList = adjMap.get(curr);
                 for(int adj : adjList)
                 {
                     if(!visited[adj])
                     {
+                        notVisitSet.remove(adj);
                         visited[adj] = true;
                         que.add(adj);
                     }
@@ -77,6 +77,6 @@ public class BOJ11724_연결_요소의_개수_실버2_권은홍 {
             Graph.addEdge(v1, v2);
         }
 
-        System.out.println(Graph.getConnectedComponent(v1));
+        System.out.println(Graph.getConnectedComponent());
     }
 }
